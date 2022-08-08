@@ -4,7 +4,7 @@
 .\"
 .\"
 .\"
-.TH _PRINTF "July 30 2019" "0.1" "Library functions manual"
+.TH _PRINTF "August 2022" "0.1" "Library functions manual"
 
 .SH NAME
 .SH ""
@@ -15,7 +15,7 @@
 .SH SYNOPSIS
 .SH ""
 
-#include "holberton.h"
+#include "main.h"
 
 int _printf(const char *[FORMAT], ...);
 
@@ -24,15 +24,15 @@ int _printf(const char *[FORMAT], ...);
 
 
 The printf function sends formatted output to stdout.
-A custom _printf() for learning purposes was developed by cohort  #9 students Jimmer and Edward Ortiz.
-_printf() function format string is a character string, beginning and ending in its initial shift state, if any. 
+A custom _printf() for learning purposes was developed by cohort  #8 students Yonas Ferew and Chidera Akubude.
+_printf() function format string is a character string, beginning and ending in its initial shift state, if any.
 These arguments are placed using the percentage '%' operator
 
 .SS Compilation
 
 .P
 .RS
-#include "holberton.h"
+#include "main.h"
 
 $ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c
 $ gcc -Wall -Werror -Wextra -pedantic -g -Wno-format *.c (for gdb debbuging)
@@ -123,3 +123,10 @@ hexadecimal preceded by \x
 .RE
 
 .P
+
+.SH "AUTHORS"
+.SH ""
+
+Yonas Ferew and Chidera Akubude
+
+

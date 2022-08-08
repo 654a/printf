@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * array_binary - convert to binary.
  * @prueba: given number.

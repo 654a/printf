@@ -1,10 +1,13 @@
 #include "main.h"
+
 /**
  * print_unsig - print an int numbers.
  * @va: number tested
  * Return: Always 0.
  */
+
 int print_unsig(va_list va)
+
 {
 	int dig = 0, tend = 1, iter = 1;
 	long int numch, num;
@@ -14,7 +17,6 @@ int print_unsig(va_list va)
 	lenght = 0;
 	n = va_arg(va, unsigned int);
 	num = n;
-
 	while (num > 0)
 	{
 		num /= 10;
