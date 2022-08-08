@@ -45,7 +45,5 @@ int print_Hexa(va_list prueba);
 int print_octal(va_list prueba);
 int print_String(va_list va);
 int print_pointer(va_list va);
-int prinpint(va_list arguments, char *buf, unsigned int ibuf);
-int prinsint(va_list arguments, char *buf, unsigned int ibuf);
 
 #endif
