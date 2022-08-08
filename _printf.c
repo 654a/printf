@@ -1,85 +1,45 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * make_struct - produces output according to a format.
- * @a: formats input.
- * Return: lenght of format.
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-void make_struct(prfor_t a[])
-{
-	a[0].form = "c";
-	a[0].f = print_char;
-	a[1].form = "s";
-	a[1].f = print_string;
-	a[2].form = "i";
-	a[2].f = print_number;
-	a[3].form = "d";
-	a[3].f = print_number;
-	a[4].form = "b";
-	a[4].f = print_binary;
-	a[5].form = "r";
-	a[5].f = print_string_rev;
-	a[6].form = "R";
-	a[6].f = print_string_rot;
-	a[7].form = "u";
-	a[7].f = print_unsig;
-	a[8].form = "o";
-	a[8].f = print_octal;
-	a[9].form = "x";
-	a[9].f = print_hexa;
-	a[10].form = "X";
-	a[10].f = print_Hexa;
-	a[11].form = "S";
-	a[11].f = print_String;
-	a[12].form = "p";
-	a[12].f = print_pointer;
-	a[13].form = NULL;
-	a[13].f = NULL;
-}
-/**
- * _printf - produces output according to a format.
- * @format: formats input.
- * Return: lenght of format.
- */
-
 int _printf(const char * const format, ...)
 {
+	convert_match m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+		{"%%", printf_37},
+		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
+	};
 
-	prfor_t form_get[14];
-	int i, j, lenght = 0, find = 0;
-	va_list argu;
+	va_list args;
+	int i = 0, j, len = 0;
 
-	make_struct(form_get);
-	va_start(argu, format);
-	if (format == NULL || (format[0] == '%' && format[1] == 0))
+	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	for (i = 0; format != NULL && format[i]; i++)
+
+Here:
+	while (format[i] != '\0')
 	{
-		if (format[i] != '%')
-			_putchar(format[i]);
-		else
+		j = 13;
+		while (j >= 0)
 		{
-			i++, j = 0;
-			if (format[i] == '%')
-				_putchar('%');
-			find = 0;
-			for (; j < 13; j++)
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
-				if (form_get[j].form[0] == format[i])
-				{
-					lenght += (form_get[j].f(argu)) - 1;
-					find = 1;
-				}
+				len += m[j].f(args);
+				i = i + 2;
+				goto Here;
 			}
-			if (!find && format[i] != '%')
-			{
-				lenght++;
-				_putchar('%');
-				_putchar(format[i]);
-			}
+			j--;
 		}
-		lenght++;
+		_putchar(format[i]);
+		len++;
+		i++;
 	}
-	va_end(argu);
-	return (lenght);
+	va_end(args);
+	return (len);
 }
