@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * comparehh - take arguments bigger than 10 and change it to char.
  * @res: number given.

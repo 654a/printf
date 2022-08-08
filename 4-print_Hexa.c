@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * compareH - switch the given numbert to hexa uppercase.
  * @res: given number.

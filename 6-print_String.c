@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * print_String - function that prints stings.
  * @va: arguments.
